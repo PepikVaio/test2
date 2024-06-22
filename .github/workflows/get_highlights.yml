@@ -1,0 +1,42 @@
+name: Get PDF Highlights
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'SSH Username'
+        required: true
+        default: 'root'
+      host:
+        description: 'Device Host'
+        required: true
+        default: '192.168.20.55'
+      password:
+        description: 'SSH Password'
+        required: true
+        default: 'yourpass'
+
+jobs:
+  get_highlights:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Install dependencies
+      run: |
+        pip install paramiko
+
+    - name: Run script
+      run: |
+        python get_pdf_highlights.py
+      env:
+        USERNAME: ${{ github.event.inputs.username }}
+        HOST: ${{ github.event.inputs.host }}
+        PASS: ${{ github.event.inputs.password }}
