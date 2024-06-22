@@ -3,9 +3,9 @@ import paramiko
 import json
 
 # Nastavení zařízení
-USERNAME = os.getenv('USERNAME')
-HOST = os.getenv('HOST')
-PASS = os.getenv('PASS')
+USERNAME = os.getenv('root')
+HOST = os.getenv('10.1.0.24')
+PASS = os.getenv('qLA21wsX9x')
 PATH_XOCHITL = "/home/root/.local/share/remarkable/xochitl/"
 
 # Funkce pro připojení k zařízení Remarkable pomocí SSH
